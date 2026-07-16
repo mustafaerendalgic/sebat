@@ -1,24 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:sebat/styles/main_style.dart';
 
-abstract class TextStyles{
+abstract class TextStyles {
+  static final Color _textColor = MainStyle.styleType.black;
 
-  static final Color _textColor = MainStyle.styleType.textColor;
-
-   //-------------------------------- Text Styles ---------------------------------
+  //-------------------------------- Text Styles ---------------------------------
 
   static final TextStyle captionTextStyle = TextStyle(
     color: _textColor,
     fontSize: 12,
     fontWeight: FontWeight.normal,
-    fontFamily: 'unna',
-  );
-
-  static final TextStyle boldCaptionTextStyle = TextStyle(
-    color: _textColor,
-    fontSize: 12,
-    fontWeight: FontWeight.bold,
     fontFamily: 'unna',
   );
 
@@ -29,24 +20,10 @@ abstract class TextStyles{
     fontFamily: 'unna',
   );
 
-  static final TextStyle boldBodyTextStyle = TextStyle(
-    color: _textColor,
-    fontSize: 16,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'unna',
-  );
-
-  static final TextStyle boldTitleTextStyle = TextStyle(
-    color: _textColor,
-    fontSize: 24,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'unna',
-  );
-
   static final TextStyle titleTextStyle = TextStyle(
     color: _textColor,
     fontSize: 24,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
     fontFamily: 'unna',
   );
 
@@ -65,7 +42,7 @@ abstract class TextStyles{
   );
 
   static final TextStyle timerTextStyle = TextStyle(
-    color: _textColor,
+    color: MainStyle.styleType.primary,
     fontSize: 64,
     fontWeight: FontWeight.normal,
     fontFamily: 'rethink',

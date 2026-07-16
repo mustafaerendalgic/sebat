@@ -8,6 +8,7 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.transparent,
       height: 56,
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),      
       child: Row(
