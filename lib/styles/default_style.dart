@@ -1,17 +1,17 @@
-
 import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:sebat/styles/app_style.dart';
 
-class DefaultStyle implements AppStyle{
-
+class DefaultStyle implements AppStyle {
   //-------------------------------- Colors ---------------------------------
   @override
   Color get primary => Color(0xFFEF6351);
   @override
-  Color get textColor => Color(0xFF1B2222);
+  Color get dropShadow => Color(0xFFFBC3BC);
+  @override
+  Color get black => Color(0xFF1B2222);
   @override
   Color get noteBackgroundColor => Color(0xFFFBC3BC);
   @override
@@ -21,7 +21,12 @@ class DefaultStyle implements AppStyle{
   @override
   Color get archiveMostFocusedBody => Color(0xFF9AC1AC);
   @override
-  List<Color> get archiveTopicsCardColors => [Color(0xFFFBC3BC), Color(0xFFF2AA7E), Color(0xFFFFACFAD), Color(0xFFFF3BAD9),];
+  List<Color> get archiveTopicsCardColors => [
+    Color(0xFFFBC3BC),
+    Color(0xFFF2AA7E),
+    Color(0xFFFFACFAD),
+    Color(0xFFFF3BAD9),
+  ];
   @override
   Color get stroke => Color(0xFFFF9386);
 
@@ -51,6 +56,5 @@ class DefaultStyle implements AppStyle{
     colors: [fabStartColor, fabEndColor],
     stops: [0.24, 0.85],
     transform: GradientRotation(-126 * math.pi / 180),
-  ); 
-
+  );
 }

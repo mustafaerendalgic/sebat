@@ -2,9 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-abstract class AppStyle{
+abstract class AppStyle {
   Color get primary;
-  Color get textColor;
+  Color get dropShadow;
+  Color get black;
   Color get noteBackgroundColor;
   Color get gray;
   Color get archiveMostFocusedHeader;
