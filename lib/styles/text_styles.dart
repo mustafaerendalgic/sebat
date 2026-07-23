@@ -22,7 +22,7 @@ abstract class TextStyles {
 
   static final TextStyle titleTextStyle = TextStyle(
     color: _textColor,
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: FontWeight.bold,
     fontFamily: 'unna',
   );

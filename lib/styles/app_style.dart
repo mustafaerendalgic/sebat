@@ -19,4 +19,7 @@ abstract class AppStyle {
   Color get fabStartColor;
   Color get fabEndColor;
   LinearGradient get fabGradient;
+  LinearGradient get mostFocusedGradient;
+  Color get mostFocusedChips;
+  List<Color> get topicCardBackgrounds;
 }

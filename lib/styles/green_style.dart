@@ -62,4 +62,14 @@ class GreenStyle implements AppStyle {
     stops: [0.24, 0.85],
     transform: GradientRotation(-126 * math.pi / 180),
   );
+
+@override
+  LinearGradient get mostFocusedGradient => LinearGradient(colors: [Color(0xffFFD9D4), Color(0xffFFE3E0)], begin: Alignment.topCenter, end: AlignmentGeometry.bottomCenter);
+
+  @override
+  Color get mostFocusedChips => Color(0xfffbc3bc);
+
+  @override
+  List<Color> get topicCardBackgrounds => [Color(0xffFBC3BC), Color(0xffF3BAD9), Color(0xffFACFAD)];
+
 }

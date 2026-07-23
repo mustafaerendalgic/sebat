@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sebat/styles/main_style.dart';
 import 'package:sebat/ui/account.dart';
-import 'package:sebat/ui/archive.dart';
-import 'package:sebat/ui/ask_ai.dart';
+import 'package:sebat/ui/archives/archives.dart';
+import 'package:sebat/ui/ai/ask_ai.dart';
 import 'package:sebat/ui/home.dart';
 import 'package:sebat/ui/top_bar.dart';
 
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
                       Expanded(
                         child: switch (index) {
                           0 => const HomePage(),
-                          1 => const ArchivePage(),
+                          1 => const ArchivesPage(),
                           2 => const AskAiPage(),
                           3 => const AccountPage(),
                           _ => const HomePage(),

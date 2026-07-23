@@ -25,6 +25,16 @@ class NoteHandler with ChangeNotifier {
       "Tarımdaki makineleşme ancak var olan işgücü yetmediğinde, sağlanan fazla işgücüne ihtiyacı bulunan bir sanayinin varlığında önem kazanmaktadır. ",
       "28 Nisan 2026",
     ),
+    Note(
+      0,
+      "Tarımdaki makineleşme ancak var olan işgücü yetmediğinde, sağlanan fazla işgücüne ihtiyacı bulunan bir sanayinin varlığında önem kazanmaktadır. ",
+      "28 Nisan 2026",
+    ),
+    Note(
+      0,
+      "Tarımdaki makineleşme ancak var olan işgücü yetmediğinde, sağlanan fazla işgücüne ihtiyacı bulunan bir sanayinin varlığında önem kazanmaktadır. ",
+      "28 Nisan 2026",
+    ),
   ];
 
   final String _filter = "";

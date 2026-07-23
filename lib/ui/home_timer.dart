@@ -9,10 +9,10 @@ class HomeTimer extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = MainStyle.styleType;
     return Container(
+      decoration: BoxDecoration(gradient: style.backgroundGradient),
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.center,
-      color: Colors.transparent,
       child: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(bottom: 62, top: 56),
@@ -28,7 +28,7 @@ class HomeTimer extends StatelessWidget {
                     children: [
                       Text(
                         "Türkiye'de Geri Kalmışlığın Tarihi",
-                        style: TextStyles.titleTextStyle,
+                        style: TextStyles.titleTextStyle.copyWith(fontSize: 24, fontWeight: FontWeight.normal),
                       ),
                       Text("22 saat", style: TextStyles.bodyTextStyle),
                     ],
@@ -56,43 +56,17 @@ class HomeTimer extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
+                      height: 72,
+                      width: 72,
+                      padding: EdgeInsets.only(left: 4),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
+                        shape: BoxShape.circle,
                         color: style.primary,
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 8,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(
-                              top: 4,
-                              bottom: 4,
-                              right: 4,
-                              left: 8,
-                            ),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: Icon(
-                              CupertinoIcons.play_fill,
-                              color: style.primary,
-                              size: 24,
-                            ),
-                          ),
-                          Text(
-                            "Başla",
-                            style: TextStyles.titleTextStyle.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                      child: Icon(
+                        CupertinoIcons.play_fill,
+                        color: Colors.white,
+                        size: 42,
                       ),
                     ),
                   ),
@@ -127,6 +101,10 @@ class HomeTimer extends StatelessWidget {
                         Container(
                           height: 48,
                           width: 48,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: style.primary,
@@ -134,20 +112,19 @@ class HomeTimer extends StatelessWidget {
                           child: Icon(
                             CupertinoIcons.mic_fill,
                             color: Colors.white,
-                            size: 32,
                           ),
                         ),
                         Container(
                           height: 48,
                           width: 48,
+                          padding: EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: style.primary,
                           ),
                           child: Icon(
-                            CupertinoIcons.sparkles,
+                            CupertinoIcons.camera,
                             color: Colors.white,
-                            size: 32,
                           ),
                         ),
                       ],
