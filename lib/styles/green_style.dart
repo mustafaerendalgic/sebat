@@ -72,4 +72,7 @@ class GreenStyle implements AppStyle {
   @override
   List<Color> get topicCardBackgrounds => [Color(0xffFBC3BC), Color(0xffF3BAD9), Color(0xffFACFAD)];
 
+  @override
+  Color get recommendedQuestionsBackground => Color(0xffffe3e0);
+
 }

@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sebat/styles/main_style.dart';
 import 'package:sebat/styles/text_styles.dart';
-import 'package:sebat/ui/ai_sparkles_circle.dart';
+import 'package:sebat/ui/common/ai_sparkles_circle.dart';
 
 class AiFab extends StatelessWidget {
-  const AiFab({super.key});
+  final bool margin;
+  const AiFab({required bool this.margin, super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin == true ? EdgeInsets.only(bottom: 70, left: 16, right: 16) : EdgeInsets.zero ,
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      margin: EdgeInsets.only(bottom: 70, left: 16, right: 16),
       decoration: BoxDecoration(
         gradient: MainStyle.styleType.backgroundGradient,
         borderRadius: BorderRadius.circular(16),

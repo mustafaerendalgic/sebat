@@ -6,6 +6,7 @@ import 'package:sebat/data/entity/topic.dart';
 import 'package:sebat/styles/app_style.dart';
 import 'package:sebat/styles/main_style.dart';
 import 'package:sebat/styles/text_styles.dart';
+import 'package:sebat/ui/common/ai_fab.dart';
 import 'package:sebat/ui/common/search_bar.dart';
 
 enum ArchiveSortChips { byLatest, byFocusTime }
@@ -22,7 +23,6 @@ class ArchivesState extends State<ArchivesPage> {
   ArchiveSortChips _sortType = ArchiveSortChips.byLatest;
   @override
   Widget build(BuildContext context) {
-
     List<Topic> topicList = [
       Topic(
         "Türkiye'de Geri Kalmışlığın Tarihi",
@@ -50,7 +50,11 @@ class ArchivesState extends State<ArchivesPage> {
                 spacing: 16,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
+                    padding: const EdgeInsets.only(
+                      right: 16.0,
+                      left: 16,
+                      top: 16,
+                    ),
                     child: Text(
                       "Sık Odaklanılan Başlıklar",
                       style: TextStyles.titleTextStyle,
@@ -82,58 +86,79 @@ class ArchivesState extends State<ArchivesPage> {
                           child: Row(
                             spacing: 12,
                             children: [
-                              IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.arrow_swap), iconSize: 21,),
-                              ...ArchiveSortChips.values.map((by){
-                                final Color color = by == _sortType ? Colors.white : _style.gray;
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(CupertinoIcons.arrow_swap),
+                                iconSize: 21,
+                              ),
+                              ...ArchiveSortChips.values.map((by) {
+                                final Color color = by == _sortType
+                                    ? Colors.white
+                                    : _style.gray;
                                 return ChoiceChip(
-                                  label: switch(by){
-                                    ArchiveSortChips.byLatest => Text("En son odaklanılan", style: TextStyles.bodyTextStyle.copyWith(color: color),),
-                                    ArchiveSortChips.byFocusTime => Text("Odaklanma süresi", style: TextStyles.bodyTextStyle.copyWith(color: color),),                               
-                                            
+                                  label: switch (by) {
+                                    ArchiveSortChips.byLatest => Text(
+                                      "En son odaklanılan",
+                                      style: TextStyles.bodyTextStyle.copyWith(
+                                        color: color,
+                                      ),
+                                    ),
+                                    ArchiveSortChips.byFocusTime => Text(
+                                      "Odaklanma süresi",
+                                      style: TextStyles.bodyTextStyle.copyWith(
+                                        color: color,
+                                      ),
+                                    ),
                                   },
                                   checkmarkColor: color,
                                   selected: _sortType == by,
                                   selectedColor: _style.primary,
                                   visualDensity: VisualDensity.compact,
-                                  onSelected: (bool selected){
-                                    if(selected){
+                                  onSelected: (bool selected) {
+                                    if (selected) {
                                       setState(() {
                                         _sortType = by;
                                       });
                                     }
                                   },
                                 );
-                              })
+                              }),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            SliverList(delegate: SliverChildBuilderDelegate(
-              childCount: topicList.length,
-              (context, index){
-                return TopicCards(topicList[index]);
-              },
-              )
-            )
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                childCount: topicList.length,
+                (context, index) {
+                  return TopicCards(topicList[index]);
+                },
+              ),
+            ),
           ],
         ),
       ),
+      floatingActionButton: AiFab(margin: true),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
 
-class TopicCards extends StatelessWidget{
+class TopicCards extends StatelessWidget {
   final Topic _topic;
   const TopicCards(this._topic, {super.key});
   @override
   Widget build(BuildContext context) {
     final _random = new Random();
-    final backgroundColor = MainStyle.styleType.topicCardBackgrounds[_random.nextInt(MainStyle.styleType.topicCardBackgrounds.length)];
+    final backgroundColor =
+        MainStyle.styleType.topicCardBackgrounds[_random.nextInt(
+          MainStyle.styleType.topicCardBackgrounds.length,
+        )];
     return Padding(
       padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
       child: Row(
@@ -143,25 +168,48 @@ class TopicCards extends StatelessWidget{
             alignment: AlignmentGeometry.center,
             height: 64,
             width: 64,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: backgroundColor),
-            child: Text(_topic.lastFocused.split(" ").sublist(2).join(" "), style: TextStyles.bodyTextStyle.copyWith(fontWeight: FontWeight.bold),),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: backgroundColor,
+            ),
+            child: Text(
+              _topic.lastFocused.split(" ").sublist(2).join(" "),
+              style: TextStyles.bodyTextStyle.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),
-              color: backgroundColor),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                spacing: 4,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(_topic.topic, style: TextStyles.bodyTextStyle.copyWith(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, maxLines: 1,),
-                  Text(_topic.lastNote, style: TextStyles.captionTextStyle, overflow: TextOverflow.ellipsis, maxLines: 1,),
-                ],
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: backgroundColor,
               ),
-            ),),
-          )
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  spacing: 4,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _topic.topic,
+                      style: TextStyles.bodyTextStyle.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    Text(
+                      _topic.lastNote,
+                      style: TextStyles.captionTextStyle,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -212,29 +260,27 @@ class MostFocusedCardsState extends State<MostFocusedCards> {
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: [      
+              children: [
                 ...Chips.values.map((e) {
                   return Chip(
-                    label: Text(
-                      switch(e){
-                        Chips.time => topic.focusTime,
-                        Chips.lastWhen => topic.lastFocused,
-                        Chips.noteNumber => topic.noteNumber.toString() + " Not"
-                      },
-                      style: TextStyles.captionTextStyle,
-                    ),
+                    label: Text(switch (e) {
+                      Chips.time => topic.focusTime,
+                      Chips.lastWhen => topic.lastFocused,
+                      Chips.noteNumber => topic.noteNumber.toString() + " Not",
+                    }, style: TextStyles.captionTextStyle),
                     backgroundColor: MainStyle.styleType.mostFocusedChips,
-                    avatar: e == Chips.time ? Icon(
-                      Icons.history,
-                      size: 14,
-                      color: MainStyle.styleType.black,
-                    ) : null,
+                    avatar: e == Chips.time
+                        ? Icon(
+                            Icons.history,
+                            size: 14,
+                            color: MainStyle.styleType.black,
+                          )
+                        : null,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     visualDensity: VisualDensity.compact,
                     side: BorderSide.none,
                   );
                 }),
-                
               ],
             ),
           ],

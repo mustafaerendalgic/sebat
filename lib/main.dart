@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sebat/styles/main_style.dart';
-import 'package:sebat/ui/account.dart';
+import 'package:sebat/ui/account/account.dart';
 import 'package:sebat/ui/archives/archives.dart';
 import 'package:sebat/ui/ai/ask_ai.dart';
-import 'package:sebat/ui/home.dart';
-import 'package:sebat/ui/top_bar.dart';
+import 'package:sebat/ui/home/home.dart';
+import 'package:sebat/ui/common/top_bar.dart';
 
 void main() {
   debugPaintBaselinesEnabled = false;

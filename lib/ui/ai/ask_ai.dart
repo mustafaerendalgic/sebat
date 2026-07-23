@@ -1,12 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sebat/data/entity/conversations.dart';
 import 'package:sebat/styles/app_style.dart';
 import 'package:sebat/styles/main_style.dart';
 import 'package:sebat/styles/text_styles.dart';
+import 'package:sebat/ui/ai/previous_questions.dart';
+import 'package:sebat/ui/ai/suggested_questions.dart';
 import 'package:sebat/ui/common/ai_fab.dart';
+import 'package:lottie/lottie.dart';
 
-class AskAiPage extends StatelessWidget {
+class AskAiPage extends StatefulWidget {
   const AskAiPage({super.key});
+
+  @override
+  State<AskAiPage> createState() {
+    return AskAiPageState();
+  }
+}
+
+class AskAiPageState extends State<AskAiPage> {
+  late final AnimationController _lottieController;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +27,13 @@ class AskAiPage extends StatelessWidget {
       "Son 7 gün boyunca ne kadar odaklandım?",
       "Aldığım notlar hakkında önerilerin var mı?",
       "Bana bir plan hazırlayabilir misin?",
+    ];
+    final List<Conversations> conversations = [
+      Conversations(
+        "Mürtezika kelimesinin internetteki anlamı ile İsmail Cem’in Türkiye’de Geri Kalmışlığın Tarihi kitabındaki anlamı uyuşmuyor",
+        "Mürtezika kelimesi Osmanlı’da bakıma muhtaç, ekonomiye katkısı olmayan ve devletin ilgilendiği kişiler için kullanılır... Devamını gör",
+        "17 Nisan 2026",
+      ),
     ];
     final AppStyle _style = MainStyle.styleType;
     return Scaffold(
@@ -24,65 +44,39 @@ class AskAiPage extends StatelessWidget {
           slivers: [
             SliverToBoxAdapter(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16,
                 children: [
-                  Container(padding: EdgeInsets.only(top: 140), child: Text("Yapay zekaya sor", style: TextStyles.askAiTextStyle,)),
-                  AiFab(),
-                  ...questions.map((question) => SuggestedQuestionCard(questionText: question))
-                ]
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-class SuggestedQuestionCard extends StatelessWidget {
-  final String questionText;
-
-  const SuggestedQuestionCard({
-    required this.questionText,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final AppStyle style = MainStyle.styleType;
-
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      decoration: BoxDecoration(
-        color: style.noteBackgroundColor, // Açık pembe zemin rengin
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: style.stroke, // İnce kırmızı/pembe kenarlık
-          width: 1,
-        ),
-      ),
-      child: Row(
-        spacing: 12,
-        children: [
-          // Sol taraftaki + ikonu
-          Icon(
-            Icons.add,
-            color: style.primary,
-            size: 20,
-          ),
-          // Soru metni
-          Expanded(
-            child: Text(
-              questionText,
-              style: TextStyles.bodyTextStyle.copyWith(
-                color: style.primary, // Tasarımdaki pembe/kırmızımsı yazı rengi
-                fontWeight: FontWeight.w500,
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(top: 140),
+                        child: Text(
+                          "Yapay \n zekaya sor",
+                          style: TextStyles.askAiTextStyle,
+                        ),
+                      ),
+                      Expanded(
+                        child: Lottie.asset('assets/ask_ai.json', repeat: true),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: AiFab(margin: false),
+                  ),
+                  ...questions.map(
+                    (question) => SuggestedQuestionCard(questionText: question),
+                  ),
+                  Text("Geçmiş Soruların", style: TextStyles.titleTextStyle),
+                  ...conversations.map((conversation) {
+                    return PreviousQuestions(conversation: conversation);
+                  }),
+                ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

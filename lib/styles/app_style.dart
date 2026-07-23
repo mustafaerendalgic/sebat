@@ -22,4 +22,5 @@ abstract class AppStyle {
   LinearGradient get mostFocusedGradient;
   Color get mostFocusedChips;
   List<Color> get topicCardBackgrounds;
+  Color get recommendedQuestionsBackground;
 }

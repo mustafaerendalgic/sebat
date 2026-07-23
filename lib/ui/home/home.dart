@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sebat/ui/ai/ask_ai.dart';
-import 'package:sebat/ui/home_notes.dart';
-import 'package:sebat/ui/home_timer.dart';
+import 'package:sebat/ui/home/home_notes.dart';
+import 'package:sebat/ui/home/home_timer.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
