@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sebat/data/entity/note.dart';
-import 'package:sebat/data/enum/chips.dart';
+import 'package:sebat/data/enum/note_sort.dart';
 import 'package:sebat/data/repo/note_handler.dart';
 import 'package:sebat/data/repo/note_session.dart';
 import 'package:sebat/styles/app_style.dart';

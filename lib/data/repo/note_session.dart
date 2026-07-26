@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:sebat/data/enum/chips.dart';
+import 'package:sebat/data/enum/note_sort.dart';
 
 class NoteSession with ChangeNotifier{
   NoteSession._internal();
