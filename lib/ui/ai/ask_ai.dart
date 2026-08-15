@@ -19,7 +19,6 @@ class AskAiPage extends StatefulWidget {
 }
 
 class AskAiPageState extends State<AskAiPage> {
-  late final AnimationController _lottieController;
 
   @override
   Widget build(BuildContext context) {

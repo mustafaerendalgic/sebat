@@ -58,19 +58,22 @@ class MyApp extends StatelessWidget {
               builder: (context) {
                 return Scaffold(
                   backgroundColor: Colors.transparent,
-                  body: Column(
-                    children: [
-                      TopBar(),
-                      Expanded(
-                        child: switch (index) {
-                          0 => const HomePage(),
-                          1 => const ArchivesPage(),
-                          2 => const AskAiPage(),
-                          3 => const AccountPage(),
-                          _ => const HomePage(),
-                        },
-                      ),
-                    ],
+                  body: Material(
+                    type: MaterialType.transparency,
+                    child: Column(
+                      children: [
+                        TopBar(),
+                        Expanded(
+                          child: switch (index) {
+                            0 => const HomePage(),
+                            1 => const ArchivesPage(),
+                            2 => const AskAiPage(),
+                            3 => const AccountPage(),
+                            _ => const HomePage(),
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

@@ -1,3 +1,6 @@
+import 'package:sebat/data/entity/note.dart';
+import 'package:sebat/data/entity/topic.dart';
+
 sealed class FocusState {}
 
 class FocusInitial extends FocusState {
@@ -21,6 +24,12 @@ class FocusCompleted extends FocusState {
   final Duration totalFocusedTime;
   final String topic;
   FocusCompleted({required this.totalFocusedTime, required this.topic});
+}
+
+abstract class NoteHandler {
+  Future<void> addNotes(Note note, Topic topic);
+  Future<void> deleteNotes(Note note, Topic topic);
+  Future<void> updateNotes(Note note, Topic topic);
 }
 
 
